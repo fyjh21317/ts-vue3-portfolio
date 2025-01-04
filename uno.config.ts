@@ -1,8 +1,15 @@
-import { defineConfig, presetUno, presetAttributify, presetMini, presetWebFonts } from 'unocss'
+import {
+  defineConfig, presetUno, presetAttributify,
+  presetMini, presetWebFonts, presetTypography
+} from 'unocss'
 
 export default defineConfig({
   presets: [
     presetUno(),
+    presetAttributify(),
+    presetMini({
+      dark: 'class' // 預設即為 class
+    }),
     presetWebFonts({
       provider: 'google', // default provider
       fonts: {
@@ -12,10 +19,7 @@ export default defineConfig({
         inter: 'Inter',
       },
     }),
-    presetAttributify(),
-    presetMini({
-      dark: 'class' // 預設即為 class
-    }),
+    presetTypography(),
   ],
   theme: {
     colors: {
