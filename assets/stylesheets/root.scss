@@ -1,0 +1,8 @@
+@use "body.scss";
+@use "scrollbar.scss";
+@use "transitions.scss";
+
+/* 設定全域字體 */
+body {
+  font-family: var(--un-font-sans, 'Noto Sans'); /* UnoCSS 自動生成的變數 */
+}
