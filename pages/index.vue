@@ -1,4 +1,34 @@
 <script setup lang="ts">
+const { $annotate } = useNuxtApp()
+const notationColor = '#ECE8C5'
+const isTextAnimating = ref(false)
+const notationDom = ref<HTMLElement | null>(null)
+
+// 建立 rough-notation 實例
+let annotation: ReturnType<typeof $annotate> | null = null
+
+onMounted(async () => {
+  await nextTick()
+
+  if (notationDom.value) {
+    annotation = $annotate(notationDom.value, {
+      type: 'highlight',
+      color: notationColor
+    })
+    initTextAnimation()
+  } else {
+    console.error('notationDom is null')
+  }
+})
+
+// 初始化動畫
+function initTextAnimation() {
+  setTimeout(() => {
+    isTextAnimating.value = true
+    annotation?.show()
+  }, 800)
+}
+
 useHead({
   title: 'Home'
 })
@@ -25,25 +55,18 @@ useHead({
               Full-stack Web Developer
             </h1>
 
-            <!-- <h3
+            <h3
               class="font-semibold justify-center text-xl items-center transition-opacity duration-1000 flex gap-2 text-center md:(text-2xl text-left justify-start) text-[#fde047] dark:text-dark-200"
-              :class="animateText ? 'opacity-100' : 'opacity-30'"
+              :class="isTextAnimating ? 'opacity-100' : 'opacity-30'"
             >
               <div class="flex flex-col items-end text-[10px] text-black/50 dark:text-white/50">
                 <span>currently</span>
               </div>
 
-              <RoughNotation
-                :is-show="animateText"
-                type="highlight"
-                :color="notationColor"
-                @init="textAnimationInit"
-              >
-                <span class="text-black/90 dark:text-white/90 px-2">
-                  Beginner in Cross-Platform Mobile Apps
-                </span>
-              </RoughNotation>
-            </h3> -->
+              <span ref="notationDom" class="text-black/90 dark:text-white/90 px-2">
+                Beginner in Cross-Platform Mobile Apps
+              </span>
+            </h3>
           </div>
 
           <!--  簡單技能 含跳轉 -->
