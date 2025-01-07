@@ -1,6 +1,6 @@
 import {
   defineConfig, presetUno, presetAttributify,
-  presetMini, presetWebFonts, presetTypography
+  presetMini, presetWebFonts, transformerVariantGroup, presetTypography
 } from 'unocss'
 
 export default defineConfig({
@@ -20,6 +20,9 @@ export default defineConfig({
       },
     }),
     presetTypography(),
+  ],
+  transformers: [
+    transformerVariantGroup(),
   ],
   theme: {
     colors: {
