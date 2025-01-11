@@ -18,7 +18,10 @@ useHead({
 
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-neutral-900">
-    <!-- Nuxt component -->
+    <!-- 導覽列 -->
+    <Navbar class="pt-10" />
+
+    <!-- 主頁面 -->
     <main class="responsive-screen min-h-screen pb-8">
       <NuxtPage />
     </main>
