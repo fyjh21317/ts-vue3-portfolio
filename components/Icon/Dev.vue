@@ -38,28 +38,21 @@
   </svg>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  props: {
-    brand: {
-      type: String,
-      required: true,
-      default: ''
-    }
-  },
-  setup(props) {
-    /**
-     * Checks if passed value matches with the prop value.
-     * @param {string} value
-     * @returns {boolean}
-     */
-    const isSame = (value: string): boolean => {
-      return props.brand?.toLowerCase() === value?.toLowerCase()
-    }
-
-    return {
-      isSame
-    }
+<script setup lang="ts">
+const props = defineProps({
+  brand: {
+    type: String,
+    required: true,
+    default: ''
   }
 })
+
+/**
+ * Checks if passed value matches with the prop value.
+ * @param {string} value
+ * @returns {boolean}
+ */
+const isSame = (value: string): boolean => {
+  return props.brand?.toLowerCase() === value?.toLowerCase()
+}
 </script>

@@ -71,7 +71,7 @@ useHead({
           </div>
 
           <!--  技能 ＆ 跳轉至所有技能 -->
-          <div class="flex items-center justify-center md:justify-start gap-x-3 gap-y-2 flex-wrap">
+          <div class="flex-c md:justify-start gap-x-3 gap-y-2 flex-wrap">
             <Button
               v-for="item in ['Vue.js', 'JavaScript', 'TypeScript']"
               :key="item"
@@ -80,6 +80,7 @@ useHead({
               <IconDev :brand="item" class="h-5 w-5" />
             </Button>
 
+            <!-- 顯示更多 -->
             <!-- <Button
               v-tippy="{ content: 'More', placement: 'bottom' }"
               @click.native="scrollToSection('#technologies')"

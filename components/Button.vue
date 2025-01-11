@@ -1,67 +1,51 @@
-<script lang="ts">
-export default defineComponent({
-  props: {
-    href: {
-      type: [String, Object] as PropType<string | Record<string, any> | null>,
-      required: false,
-      default: null
-    },
-    icon: {
-      type: String,
-      required: false,
-      default: null
-    },
-    block: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    rounded: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    blank: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
+<!-- Button.vue -->
+<script setup lang="ts">
+const props = defineProps({
+  href: {
+    type: [String, Object] as PropType<string | Record<string, any>>,
+    required: false,
+    default: ''
   },
-  setup(props) {
-    // 動態計算 icon 名稱
-    const getIconName = computed(() => {
-      return props.icon?.startsWith('Icon') ? props.icon : `Icon${props.icon}`
-    })
-
-    return {
-      getIconName
-    }
+  blank: {
+    type: Boolean,
+    default: false
+  },
+  title: {
+    type: String,
+    default: ''
+  },
+  internal: {
+    type: Boolean,
+    default: false
+  },
+  external: {
+    type: Boolean,
+    default: false
+  },
+  block: {
+    type: Boolean,
+    default: false
+  },
+  rounded: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
   <SmartLink
-    :href="!disabled && href"
+    :href="href"
     :blank="blank"
+    :title="title"
+    :internal="internal"
+    :external="external"
     class="cursor-pointer justify-center px-5 py-2 rounded-lg card-base flex items-center space-x-2"
     :class="{
       'w-max': !block,
       'rounded-full': rounded
     }"
   >
-    <!-- Icon Slot or Component -->
-    <component :is="getIconName" v-if="icon && !$slots.icon" class="h-4 w-4" />
-    <slot v-else name="icon" />
-
-    <!-- Default Slot -->
-    <span v-if="$slots.default">
-      <slot />
-    </span>
+    <slot />
   </SmartLink>
 </template>
