@@ -50,7 +50,7 @@ export default defineConfig({
     "focus-ring":
       "ring-offset-2 light:(ring-offset-gray-50 ring-gray-300) focus:outline-none focus:ring-1 dark:focus:(ring-offset-neutral-900 ring-neutral-800)",
     "card-base":
-      "border-[0.1px] p-4 bg-opacity-25 bg-neutral-100 hover:bg-neutral-200/40 border-neutral-200 dark:(bg-neutral-800/30 border-neutral-800 text-white/80 hover:text-white hover:bg-opacity-40) transition-colors ",
+      "b-solid border-[0.1px] p-4 bg-opacity-25 bg-neutral-100 hover:bg-neutral-200/40 border-neutral-200 dark:(bg-neutral-800/30 border-neutral-800 text-white/80 hover:text-white hover:bg-opacity-40) transition-colors",
     "flex-c": "flex items-center justify-center",
   },
 })

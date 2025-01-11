@@ -72,11 +72,7 @@ useHead({
 
           <!--  技能 ＆ 跳轉至所有技能 -->
           <div class="flex-c md:justify-start gap-x-3 gap-y-2 flex-wrap">
-            <Button
-              v-for="item in ['Vue.js', 'JavaScript', 'TypeScript']"
-              :key="item"
-              class="inline-block"
-            >
+            <Button v-for="item in ['Vue.js', 'JavaScript', 'TypeScript']" :key="item">
               <IconDev :brand="item" class="h-5 w-5" />
             </Button>
 
