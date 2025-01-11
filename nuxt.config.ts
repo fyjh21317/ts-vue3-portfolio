@@ -4,5 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@unocss/nuxt', '@nuxtjs/color-mode'],
   plugins: ['~/plugins/notation.ts'],
-  css: ['@/assets/stylesheets/root.scss']
+  css: ['@/assets/stylesheets/root.scss'],
+  ssr: process.env.NODE_ENV !== 'development',
 })
