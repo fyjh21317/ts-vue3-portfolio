@@ -40,9 +40,9 @@ const props = defineProps({
     :title="title"
     :internal="internal"
     :external="external"
-    class="cursor-pointer flex-c px-5 py-2 rounded-lg card-base space-x-2"
     :class="{
-      'w-max': !block,
+      'cursor-pointer flex-c px-5 py-2 card-base space-x-2 w-max': true,
+      'rounded-lg': !rounded,
       'rounded-full': rounded
     }"
   >

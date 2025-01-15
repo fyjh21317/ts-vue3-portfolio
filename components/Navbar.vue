@@ -20,8 +20,8 @@ const getTargetLink = computed(() => {
 
         <!-- 右側按鈕區 -->
         <div class="flex space-x-2 items-center">
-          <!-- <OmnibarButton />
-          <ColorSwitcher /> -->
+          <!-- <OmnibarButton /> -->
+          <ColorSwitcher />
         </div>
       </div>
     </div>
