@@ -7,6 +7,39 @@ const notationDom = ref<HTMLElement | null>(null)
 // 建立 rough-notation 實例
 let annotation: ReturnType<typeof $annotate> | null = null
 
+// 卡片內容
+const cards = {
+  work: [
+    {
+      title: 'Research',
+      description: 'Sharing findings and innovative ideas from my research journey.',
+      href: '/research'
+    },
+    {
+      title: 'Projects',
+      description: 'My projects and contributions to the open-source community.',
+      href: '/projects'
+    }
+  ],
+  me: [
+    {
+      title: 'Blog',
+      description: 'Stories about coding, food, travel, and self-growth.',
+      href: '/blog'
+    },
+    {
+      title: 'Daily Song',
+      description: 'Fresh, cool and great song recommendations from me each day!',
+      href: '/daily'
+    },
+    {
+      title: 'Contact',
+      description: 'Need help with anything? Want to get in touch? Send me a message!',
+      href: '/me/contact'
+    }
+  ]
+}
+
 onMounted(async () => {
   await nextTick()
 
@@ -92,5 +125,37 @@ useHead({
         <SmartImage src="/images/picture.png" class="rounded-full h-50 w-50" />
       </div>
     </header>
+
+    <!-- 作品 -->
+    <section id="work">
+      <CardTitle>Work</CardTitle>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <Card
+          v-for="(card, index) in cards.work"
+          :key="`card-w-${index}`"
+          :title="card.title"
+          :href="card.href"
+        >
+          {{ card.description }}
+        </Card>
+      </div>
+    </section>
+
+    <!-- 關於我 -->
+    <section id="me">
+      <CardTitle>About Me</CardTitle>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <Card
+          v-for="(card, index) in cards.me"
+          :key="`card-m-${index}`"
+          :title="card.title"
+          :href="card.href"
+        >
+          {{ card.description }}
+        </Card>
+      </div>
+    </section>
   </div>
 </template>

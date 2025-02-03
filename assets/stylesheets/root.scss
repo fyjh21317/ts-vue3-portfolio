@@ -7,3 +7,8 @@ body {
   font-family: var(--un-font-sans, 'Inter'); /* UnoCSS 自動生成的變數 */
   margin: 0;
 }
+
+h1, h3, h2, h5 {
+  font-size: inherit;
+  margin: inherit;
+}
