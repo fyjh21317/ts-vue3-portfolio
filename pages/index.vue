@@ -1,4 +1,18 @@
 <script setup lang="ts">
+/* Interfaces */
+interface Experience {
+  title: string
+  url: string
+  position: string
+  date: string
+  isHidden?: boolean
+}
+
+interface ExperienceObject {
+  jobs: Experience[]
+  education: Experience[]
+}
+
 const { $annotate } = useNuxtApp()
 const notationColor = '#ECE8C5'
 const isTextAnimating = ref(false)
@@ -6,6 +20,12 @@ const notationDom = ref<HTMLElement | null>(null)
 
 // 建立 rough-notation 實例
 let annotation: ReturnType<typeof $annotate> | null = null
+
+// 是否顯示更多經歷
+const showExtra = reactive({
+  jobs: false,
+  education: false
+})
 
 // 卡片內容
 const cards = {
@@ -39,6 +59,59 @@ const cards = {
     }
   ]
 }
+
+// 經歷
+const experiences = {
+  jobs: [
+    {
+      title: 'Syntec Technology Co., Ltd.',
+      url: 'https://www.syntecclub.com/',
+      position: 'Web Developer',
+      date: '2023-2025'
+    },
+    {
+      title: 'Interactive Graphics Laboratory, NTU',
+      url: 'http://graphics.im.ntu.edu.tw/',
+      position: 'Research Assistant',
+      date: '2022-2023'
+    },
+    {
+      title: 'Game for Life: Reading and Redesigning Games, NTU',
+      position: 'Teaching Assistant',
+      url: 'https://nol.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=725%20U3620&class=&dpt_code=7050&ser_no=48081&semester=110-2',
+      date: '2022',
+      isHidden: true
+    },
+    {
+      title: 'Game Programming, NTU',
+      position: 'Teaching Assistant',
+      url: 'https://nol.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=725%20U3270&class=&dpt_code=7250&ser_no=19242&semester=110-1',
+      date: '2021-2022',
+      isHidden: true
+    },
+    {
+      title: 'Data Structures and Advanced Program Design, NTU',
+      position: 'Teaching Assistant',
+      url: 'https://nol.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=705%2010600&class=&dpt_code=7050&ser_no=53401&semester=110-2',
+      date: '2021',
+      isHidden: true
+    }
+  ],
+  education: [
+    {
+      title: 'National Taiwan University',
+      url: 'https://www.ntu.edu.tw/',
+      position: 'Master of Information Management',
+      date: '2020-2022'
+    },
+    {
+      title: 'National Central University',
+      url: 'https://www.ncu.edu.tw/tw/index.html',
+      position: 'Bachelor of Information Management',
+      date: '2016-2020'
+    }
+  ]
+} as ExperienceObject
 
 onMounted(async () => {
   await nextTick()
@@ -155,6 +228,53 @@ useHead({
         >
           {{ card.description }}
         </Card>
+      </div>
+    </section>
+
+    <!-- 工作經驗與學歷 -->
+    <section id="experiences" class="grid gap-x-8 gap-y-24 md:grid-cols-2">
+      <div>
+        <div class="flex items-center gap-4 justify-between">
+          <CardTitle>Experience</CardTitle>
+          <button
+            type="button"
+            class="text-black/50 text-sm hover:underline dark:text-white/30"
+            @click="showExtra.jobs = !showExtra.jobs"
+          >
+            {{ showExtra.jobs ? 'show less' : 'show more' }}
+          </button>
+        </div>
+
+        <div class="mt-4 grid gap-2">
+          <CardExperience
+            v-for="(experience, index) in experiences.jobs"
+            v-show="experience.isHidden ? showExtra.jobs : true"
+            :key="`experience-job-${index}`"
+            :title="experience.title"
+            :url="experience.url"
+            :hidden-badge="experience.isHidden"
+            :date="experience.date"
+            :position="experience.position"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-4 justify-between">
+          <CardTitle>Education</CardTitle>
+        </div>
+
+        <div class="mt-4 grid gap-2">
+          <CardExperience
+            v-for="(experience, index) in experiences.education"
+            :key="`experience-education-${index}`"
+            :title="experience.title"
+            :url="experience.url"
+            :hidden-badge="experience.isHidden"
+            :date="experience.date"
+            :position="experience.position"
+          />
+        </div>
       </div>
     </section>
   </div>
