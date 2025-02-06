@@ -113,6 +113,47 @@ const experiences = {
   ]
 } as ExperienceObject
 
+// Tech Stack
+const skills = [
+  {
+    title: 'Programming Languages',
+    items: ['JavaScript', 'TypeScript', 'C#', 'Swift', 'Dart']
+  },
+  {
+    title: 'Frontend Development',
+    items: ['Vue.js', 'Nuxt.js', 'Vuetify', 'Tailwind CSS', 'Vite', 'Webpack', 'ECharts']
+  },
+  {
+    title: 'Mobile App Development',
+    items: ['SwiftUI', 'Flutter']
+  },
+  {
+    title: 'Interactive Tools',
+    items: ['Unity', 'Figma']
+  },
+  {
+    title: 'Services',
+    items: [
+      {
+        title: 'GitHub',
+        iconPack: 'IconPlatform'
+      },
+      {
+        title: 'GitLab',
+        iconPack: 'IconPlatform'
+      },
+      {
+        title: 'Firebase',
+        iconPack: 'IconPlatform'
+      },
+      {
+        title: 'Netlify',
+        iconPack: 'IconPlatform'
+      }
+    ]
+  }
+]
+
 onMounted(async () => {
   await nextTick()
 
@@ -275,6 +316,29 @@ useHead({
             :position="experience.position"
           />
         </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="technologies">
+      <CardTitle>Technologies I use</CardTitle>
+
+      <div class="flex flex-col space-y-6 mt-8">
+        <section v-for="category in skills" :key="category.title">
+          <h5
+            class="text-sm uppercase text-black/50 pb-2 mb-4 border-b border-black/5 dark:(text-white/30 border-white/5)"
+          >
+            {{ category.title }}
+          </h5>
+
+          <div class="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-5 gap-x-2 gap-y-2">
+            <CardSkill
+              v-for="(skill, index) in category.items"
+              :key="`skill-${index}`"
+              v-bind="typeof skill === 'object' ? skill : { title: skill }"
+            />
+          </div>
+        </section>
       </div>
     </section>
   </div>
