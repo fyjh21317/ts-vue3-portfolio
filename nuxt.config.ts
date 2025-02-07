@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     fallback: "dark",
     classSuffix: "",
   },
-  plugins: ['~/plugins/notation.ts'],
+  plugins: ['~/plugins/Notation.ts', '~/plugins/Tippy.ts'],
   css: ['@/assets/stylesheets/root.scss'],
   ssr: process.env.NODE_ENV !== 'development',
 })
