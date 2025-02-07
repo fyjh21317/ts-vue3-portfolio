@@ -69,7 +69,7 @@ const handleClick = (event: MouseEvent) => {
   <!-- Internal Link -->
   <NuxtLink
     v-if="isInternalPage && !external"
-    :to="formattedHref"
+    :to="href"
     :target="blank ? '_blank' : ''"
     :title="title"
   >

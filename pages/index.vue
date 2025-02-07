@@ -154,6 +154,16 @@ const skills = [
   }
 ]
 
+// 跳轉至指定區塊
+const route = useRoute()
+const router = useRouter()
+const scrollToSection = async (id: string) => {
+  if (route.hash === id) {
+    await router.replace({ hash: '' })
+  }
+  await router.replace({ hash: id })
+}
+
 onMounted(async () => {
   await nextTick()
 
@@ -224,12 +234,15 @@ useHead({
             </Button>
 
             <!-- 顯示更多 -->
-            <!-- <Button
-              v-tippy="{ content: 'More', placement: 'bottom' }"
-              @click.native="scrollToSection('#technologies')"
+            <Button
+              v-tippy="{
+                content: 'More',
+                placement: 'bottom'
+              }"
+              @click="scrollToSection('#technologies')"
             >
               <IconEllipsis class="h-5 w-5" />
-            </Button> -->
+            </Button>
           </div>
         </div>
       </div>
