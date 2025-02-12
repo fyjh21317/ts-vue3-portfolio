@@ -12,4 +12,11 @@ export default defineNuxtConfig({
   plugins: ['~/plugins/Notation.ts', '~/plugins/Tippy.ts'],
   css: ['@/assets/stylesheets/root.scss'],
   ssr: process.env.NODE_ENV !== 'development',
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
+      ]
+    }
+  }
 })
