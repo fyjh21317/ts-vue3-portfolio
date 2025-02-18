@@ -19,9 +19,6 @@ useHead({
       <h1 class="text-black/90 dark:text-white/90 text-4xl font-semibold">
         {{ props.title }}
       </h1>
-      <h1 class="text-black/90 dark:text-white/90 text-4xl font-black">
-        {{ props.title }}
-      </h1>
 
       <p v-for="(description, index) in getDescriptions" :key="`description-${index}`">
         {{ description }}
