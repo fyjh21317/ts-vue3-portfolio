@@ -61,8 +61,7 @@ const dynamicClasses = computed((): Record<string, boolean> => {
 </script>
 
 <template>
-  <component
-    :is="href ? 'SmartLink' : 'div'"
+  <SmartLink
     :href="href"
     class="rounded-lg card-base"
     :class="dynamicClasses"
@@ -73,7 +72,7 @@ const dynamicClasses = computed((): Record<string, boolean> => {
     </div>
 
     <div class="overflow-x-hidden leading-relaxed space-y-2">
-      <h2 v-if="title" class="font-bold text-black dark:text-white truncate">
+      <h2 v-if="title" class="font-medium text-black dark:text-white truncate">
         {{ title }}
       </h2>
 
@@ -89,5 +88,5 @@ const dynamicClasses = computed((): Record<string, boolean> => {
     <div v-if="$slots.icon" class="flex-shrink-0">
       <slot name="icon" />
     </div>
-  </component>
+  </SmartLink>
 </template>
