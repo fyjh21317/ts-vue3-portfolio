@@ -339,7 +339,7 @@ useHead({
       <div class="flex flex-col space-y-6 mt-8">
         <section v-for="category in skills" :key="category.title">
           <h5
-            class="text-sm uppercase text-black/50 pb-2 mb-4 border-b border-black/5 dark:(text-white/30 border-white/5)"
+            class="font-medium text-sm uppercase text-black/50 pb-2 mb-4 border-b border-black/5 dark:(text-white/30 border-white/5)"
           >
             {{ category.title }}
           </h5>
