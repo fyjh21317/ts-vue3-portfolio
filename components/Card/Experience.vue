@@ -34,7 +34,7 @@ const showBadge = computed(() => props.hiddenBadge)
   <SmartLink :href="props.url" blank>
     <div class="card-base leading-relaxed rounded-lg">
       <div class="flex space-x-2 items-center justify-between">
-        <h3>{{ props.title }}</h3>
+        <h3 class="font-medium">{{ props.title }}</h3>
         <span class="text-black/50 dark:text-white/30 text-sm">{{ props.date }}</span>
       </div>
 
