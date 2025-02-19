@@ -46,6 +46,9 @@ const props = defineProps({
       'rounded-full': rounded
     }"
   >
-    <slot />
+    <slot name="icon" />
+    <span>
+      <slot />
+    </span>
   </SmartLink>
 </template>
