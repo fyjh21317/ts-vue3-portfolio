@@ -32,7 +32,7 @@ const cards = {
   work: [
     {
       title: 'Research',
-      description: 'Sharing findings and innovative ideas from my research journey.',
+      description: 'Curious about our research? Take a look!',
       href: '/research'
     },
     {
