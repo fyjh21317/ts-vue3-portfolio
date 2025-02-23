@@ -30,18 +30,28 @@ const props = defineProps({
 <template>
   <figure class="w-full h-full overflow-hidden">
     <img
-      :src="props.src"
-      :alt="props.alt || props.caption || 'image'"
+      :src="src"
+      :alt="alt || caption || 'image'"
       loading="lazy"
       draggable="false"
       fit="cover"
       class="object-cover w-full rounded-md"
-      :class="[props.imageClass, props.border && 'border border-black/10 dark:border-white/10']"
-      :data-zoomable="props.zoomable"
+      :class="[imageClass, border && 'border border-black/10 dark:border-white/10']"
+      :data-zoomable="zoomable"
     />
 
-    <figcaption v-if="props.caption" class="text-center">
-      {{ props.caption }}
+    <figcaption v-if="caption" class="text-center">
+      {{ caption }}
     </figcaption>
   </figure>
 </template>
+
+<style>
+.medium-zoom-overlay {
+  @apply z-40;
+}
+
+.medium-zoom-image.medium-zoom-image--opened {
+  @apply z-50;
+}
+</style>

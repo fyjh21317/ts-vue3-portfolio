@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { IconPlay, IconDocument } from '#components'
+const { $applyMediumZoom } = useNuxtApp()
 const pageLoaded = ref(false)
 
 // SEO Metadata
@@ -70,6 +71,7 @@ const research = [
 
 onMounted(() => {
   pageLoaded.value = true
+  $applyMediumZoom()
 })
 </script>
 
