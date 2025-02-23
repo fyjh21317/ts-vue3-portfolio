@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   modules: ['@unocss/nuxt', '@nuxtjs/color-mode'],
   colorMode: {
     storageKey: "color-mode",
-    preference: "system",
-    fallback: "dark",
+    preference: "light",
+    fallback: "light",
     classSuffix: "",
   },
   css: ['@/assets/stylesheets/root.scss'],

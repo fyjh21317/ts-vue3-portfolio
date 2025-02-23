@@ -1,23 +1,18 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 
-/**
- * Returns the selected color mode value.
- * @returns {string} The color mode as "light" or "dark".
- */
-const getSelectedTheme = computed(() => colorMode.value)
+/** 根據 colorMode 的 value 計算是否是 dark 模式 */
+const isDarkMode = computed(() => colorMode.value === 'dark')
 
-/**
- * Updates the color mode value.
- */
+/** 切換主題 */
 const switchTheme = () => {
-  colorMode.preference = getSelectedTheme.value === 'dark' ? 'light' : 'dark'
+  colorMode.preference = isDarkMode.value ? 'light' : 'dark'
 }
 </script>
 
 <template>
   <Button rounded elevated @click="switchTheme">
-    <IconSun v-if="getSelectedTheme === 'light'" class="h-4 w-4" />
-    <IconMoon v-else class="h-4 w-4" />
+    <IconMoon v-if="isDarkMode" class="h-4 w-4" />
+    <IconSun v-else class="h-4 w-4" />
   </Button>
 </template>
