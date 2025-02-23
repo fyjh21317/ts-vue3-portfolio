@@ -41,7 +41,7 @@ const emailHref = computed(() =>
 </script>
 
 <template>
-  <PageLayout title="Contact" description="If you have any questions, feel free to contact me.">
+  <PageLayout :title="title" :description="description">
     <div class="grid gap-4 md:grid-cols-2">
       <Card
         v-for="(contact, index) in getLinks"
