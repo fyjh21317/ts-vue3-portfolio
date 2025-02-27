@@ -1,4 +1,3 @@
-// types/musicComment.ts
 export interface SongComment {
   trackName: string;
   comment: string;

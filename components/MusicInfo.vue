@@ -24,14 +24,16 @@ const getComment = (trackName: string): string => {
     <v-img aspect-ratio="1/1" :src="albumImage" cover :width="350" class="hover-card"></v-img>
 
     <!-- 歌曲名稱 -->
-    <v-card-title v-tooltip="trackName">{{ trackName }}</v-card-title>
+    <v-card-title v-tooltip="trackName" class="dark:text-white/90">{{ trackName }}</v-card-title>
 
     <!-- 歌手名稱 -->
-    <v-card-subtitle>{{ artist }}</v-card-subtitle>
+    <v-card-subtitle class="dark:text-white/90">{{ artist }}</v-card-subtitle>
 
     <!-- Spotify 連結 -->
     <v-card-actions>
-      <v-btn color="green-accent-4" :href="spotifyUrl" target="_blank"> Listen on Spotify </v-btn>
+      <v-btn color="green-accent-4" :href="spotifyUrl" target="_blank">
+        <span class="font-semibold">Listen on Spotify</span>
+      </v-btn>
 
       <v-spacer></v-spacer>
 
