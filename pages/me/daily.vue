@@ -4,7 +4,12 @@ const tracks = ref<any[]>([])
 
 // SEO Metadata
 const title = 'Daily Song'
-const description = 'Daily random tracks from my Spotify playlist. Let’s vibe. 🎧'
+const description = 'Random tracks from my Spotify playlist. Let’s vibe. 🎧'
+
+const randomTrack = computed(() => {
+  const randomIndex = Math.floor(Math.random() * tracks.value.length)
+  return tracks.value[randomIndex]
+})
 
 onMounted(async () => {
   pageLoaded.value = true
@@ -20,16 +25,13 @@ onMounted(async () => {
 <template>
   <PageLayout :title="title" :description="description">
     <div class="grid gap-4 md:grid-cols-2">
-      <div class="music-cards">
-        <MusicInfo
-          v-for="(track, index) in tracks"
-          :key="index"
-          :trackName="track.name"
-          :artist="track.artist"
-          :spotifyUrl="track.url"
-          :albumImage="track.albumImage"
-        />
-      </div>
+      <MusicInfo
+        v-if="tracks.length > 0"
+        :trackName="randomTrack.name"
+        :artist="randomTrack.artist"
+        :spotifyUrl="randomTrack.url"
+        :albumImage="randomTrack.albumImage"
+      />
     </div>
   </PageLayout>
 </template>

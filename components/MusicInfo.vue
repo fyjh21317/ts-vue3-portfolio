@@ -1,81 +1,68 @@
 <script setup lang="ts">
-// 定義傳入的 prop 類型
-interface Track {
-  trackName: string
-  artist: string
-  spotifyUrl: string
-  albumImage: string
-}
+import { comments } from '@/assets/data/musicComment'
+// 接收從父組件傳入的歌曲資訊
+const props = defineProps({
+  trackName: String,
+  artist: String,
+  spotifyUrl: String,
+  albumImage: String
+})
 
-// 接收外部傳入的數據
-const props = defineProps<Track>()
+// 用來控制展開/收起顯示額外內容
+const show = ref(false)
+
+// 根據歌曲名稱查找評論
+const getComment = (trackName: string): string => {
+  const comment = comments.find((c) => c.trackName === trackName)
+  return comment?.comment ?? '很好聽就是了'
+}
 </script>
 
+<template>
+  <v-card class="mx-auto" variant="plain" max-width="350">
+    <!-- 封面圖片 -->
+    <v-img aspect-ratio="1/1" :src="albumImage" cover :width="350" class="hover-card"></v-img>
+
+    <!-- 歌曲名稱 -->
+    <v-card-title v-tooltip="trackName">{{ trackName }}</v-card-title>
+
+    <!-- 歌手名稱 -->
+    <v-card-subtitle>{{ artist }}</v-card-subtitle>
+
+    <!-- Spotify 連結 -->
+    <v-card-actions>
+      <v-btn color="green-accent-4" :href="spotifyUrl" target="_blank"> Listen on Spotify </v-btn>
+
+      <v-spacer></v-spacer>
+
+      <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
+    </v-card-actions>
+
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text>
+          <span class="text-wrap">{{ getComment(trackName ?? '很好聽就是了') }}</span>
+        </v-card-text>
+      </div>
+    </v-expand-transition>
+  </v-card>
+</template>
+
 <style scoped>
-.card {
-  width: 300px;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+/* v-card 懸停時顏色變化 */
+.hover-card {
+  background-color: #e0e0e0; /* 初始為灰色 */
+  transition: background-color 0.3s ease;
 }
 
-.player-card__image {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
+.hover-card:hover {
+  background-color: transparent; /* hover後恢復為透明 */
 }
 
-.player-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.player-card__info {
-  padding: 16px;
-}
-
-.track-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.artist-name {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-.spotify-link {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #1db954;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.spotify-link:hover {
-  background-color: #1ed760;
+.text-wrap {
+  word-break: break-word;
+  white-space: normal;
 }
 </style>
-
-<template>
-  <div class="card player-card">
-    <!-- 封面圖片 -->
-    <div class="player-card__image">
-      <img :src="albumImage" alt="Album Cover" class="player-card__img" />
-    </div>
-
-    <!-- 音樂資訊區域 -->
-    <div class="player-card__info">
-      <h3 class="track-name">{{ trackName }}</h3>
-      <p class="artist-name">{{ artist }}</p>
-      <a :href="spotifyUrl" target="_blank" class="spotify-link">Listen on Spotify</a>
-    </div>
-  </div>
-</template>

@@ -5,8 +5,11 @@ export default defineEventHandler(async (event) => {
   const tokenResponse = await $fetch<{ access_token: string }>("/api/spotify-token"); // 取得 access_token
   const accessToken = tokenResponse.access_token;
 
+  // 1~100隨機選個數字
+  const offset = Math.floor(Math.random() * 100) + 1;
+  // 預設只會取回100首
   const playlistResponse = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,artists(name),external_urls,album(images)))`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,artists(name),external_urls,album(images)))&offset=${offset}`,
     {
       headers: { Authorization: `Bearer ${accessToken}` },
     }
