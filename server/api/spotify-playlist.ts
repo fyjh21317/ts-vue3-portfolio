@@ -1,3 +1,6 @@
+/**
+ * 官方文件：https://developer.spotify.com/documentation/web-api/reference/get-playlist
+ */
 const {
   SPOTIFY_PLAYLIST_ID: playlistId,
 } = process.env;
