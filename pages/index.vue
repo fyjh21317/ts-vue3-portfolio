@@ -50,7 +50,7 @@ const cards = {
     {
       title: 'Daily Song',
       description: 'Fresh, cool and great song recommendations from me each day!',
-      href: '/daily'
+      href: '/me/daily'
     },
     {
       title: 'Contact',
