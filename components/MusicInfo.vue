@@ -16,6 +16,11 @@ const getComment = (trackName: string): string => {
   const comment = comments.find((c) => c.trackName === trackName)
   return comment?.comment ?? '很好聽就是了'
 }
+
+const btnColor = {
+  hover: '#E8F5E9',
+  text: '#00C853'
+}
 </script>
 
 <template>
@@ -31,8 +36,10 @@ const getComment = (trackName: string): string => {
 
     <!-- Spotify 連結 -->
     <v-card-actions>
-      <v-btn color="green-accent-4" :href="spotifyUrl" target="_blank">
-        <span class="font-semibold">Listen on Spotify</span>
+      <v-btn :color="btnColor.hover" :href="spotifyUrl" target="_blank">
+        <span class="font-medium" :style="{ color: btnColor.text, zIndex: 1 }"
+          >Listen on Spotify
+        </span>
       </v-btn>
 
       <v-spacer></v-spacer>
