@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// 動態計算導航連結的目標，目前只返回首頁
+// 目前只返回首頁
 const getTargetLink = computed(() => {
   return '/'
 })
@@ -14,6 +14,10 @@ const getTargetLink = computed(() => {
           <img
             src="/images/calcifer.png"
             alt="Logo"
+            v-tippy="{
+              content: 'Home',
+              placement: 'right'
+            }"
             class="rounded-md bg-gray-100 ring-black transition-transform ring-2 ring-opacity-5 sm:transform hover:-rotate-6 flex-shrink-0 h-10 w-10"
           />
         </NuxtLink>

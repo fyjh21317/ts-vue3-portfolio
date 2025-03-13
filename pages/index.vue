@@ -43,11 +43,6 @@ const cards = {
   ],
   me: [
     {
-      title: 'Blog',
-      description: 'Stories about coding, food, travel, and self-growth.',
-      href: '/blog'
-    },
-    {
       title: 'Daily Song',
       description: 'Fresh, cool and great song recommendations from me each day!',
       href: '/me/daily'
@@ -66,7 +61,7 @@ const experiences = {
     {
       title: 'Syntec Technology Co., Ltd.',
       url: 'https://www.syntecclub.com/',
-      position: 'Web Developer',
+      position: 'Full-Stack Developer',
       date: '2023-2025'
     },
     {
@@ -210,7 +205,7 @@ useHead({
             <h1
               class="font-semibold text-center text-4xl md:(text-6xl text-left) text-black/90 leading-normal dark:text-white/90"
             >
-              Full-stack Web Developer
+              Full-stack Developer
             </h1>
 
             <h3

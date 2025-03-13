@@ -14,7 +14,7 @@ const show = ref(false)
 // 根據歌曲名稱查找評論
 const getComment = (trackName: string): string => {
   const comment = comments.find((c) => c.trackName === trackName)
-  return comment?.comment ?? '很好聽就是了'
+  return comment?.comment ?? '這首你一定會喜歡！'
 }
 
 const btnColor = {
@@ -52,7 +52,7 @@ const btnColor = {
         <v-divider></v-divider>
 
         <v-card-text>
-          <span class="text-wrap">{{ getComment(trackName ?? '很好聽就是了') }}</span>
+          <span class="text-wrap">{{ getComment(trackName ?? '這首你一定會喜歡！') }}</span>
         </v-card-text>
       </div>
     </v-expand-transition>
