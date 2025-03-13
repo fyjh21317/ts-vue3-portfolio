@@ -25,5 +25,8 @@ useHead({
     <main class="responsive-screen min-h-screen pb-8">
       <NuxtPage />
     </main>
+
+    <!-- Go to top 按鈕-->
+    <GoTop />
   </div>
 </template>

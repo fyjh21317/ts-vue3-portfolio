@@ -19,7 +19,7 @@ const youtubeEmbedUrl = computed(() => {
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
-    <p v-else>沒有可用的 YouTube 影片</p>
+    <p v-else>Unable to retrieve YouTube video.😞</p>
   </v-card>
 </template>
 

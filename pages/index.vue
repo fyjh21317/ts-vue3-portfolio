@@ -43,14 +43,14 @@ const cards = {
   ],
   me: [
     {
-      title: 'Daily Song',
-      description: 'Fresh, cool and great song recommendations from me each day!',
-      href: '/me/daily'
-    },
-    {
       title: 'Contact',
       description: 'Need help with anything? Want to get in touch? Send me a message!',
       href: '/me/contact'
+    },
+    {
+      title: 'Daily Song',
+      description: 'Fresh, cool and great song recommendations from me each day!',
+      href: '/me/daily'
     }
   ]
 }
@@ -61,7 +61,7 @@ const experiences = {
     {
       title: 'Syntec Technology Co., Ltd.',
       url: 'https://www.syntecclub.com/',
-      position: 'Full-Stack Developer',
+      position: 'Full-stack Developer',
       date: '2023-2025'
     },
     {
