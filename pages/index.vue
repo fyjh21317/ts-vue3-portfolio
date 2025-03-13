@@ -221,8 +221,8 @@ useHead({
                 <span>currently</span>
               </div>
 
-              <span ref="notationDom" class="text-black/90 dark:text-white/90 px-2">
-                Beginner in Cross-Platform Mobile Apps
+              <span ref="notationDom" class="text-black/90 dark:text-black/50 px-2">
+                Exploring Cross-Platform Mobile Development
               </span>
             </h3>
           </div>
