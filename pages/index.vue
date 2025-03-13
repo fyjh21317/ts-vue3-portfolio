@@ -112,19 +112,15 @@ const experiences = {
 const skills = [
   {
     title: 'Programming Languages',
-    items: ['JavaScript', 'TypeScript', 'C#', 'Swift', 'Dart']
+    items: ['JavaScript', 'TypeScript', 'Dart', 'C#', 'Swift']
   },
   {
     title: 'Frontend Development',
     items: ['Vue.js', 'Nuxt.js', 'Vuetify', 'Tailwind CSS', 'Vite', 'Webpack', 'ECharts']
   },
   {
-    title: 'Mobile App Development',
-    items: ['SwiftUI', 'Flutter']
-  },
-  {
-    title: 'Interactive Tools',
-    items: ['Unity', 'Figma']
+    title: 'Mobile & Interactive Development',
+    items: ['Flutter', 'SwiftUI', 'Unity', 'Figma']
   },
   {
     title: 'Services',
