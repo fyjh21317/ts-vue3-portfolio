@@ -57,7 +57,7 @@ const emailHref = computed(() =>
         <span class="text-black/50 dark:text-white/30">{{ contact.description }}</span>
       </Card>
 
-      <Card title="Email" :href="emailHref" icon="IconAt" :utm="false">
+      <Card title="Email" :href="emailHref" icon="IconAt">
         <template #icon>
           <IconAt class="h-8 w-8" />
         </template>

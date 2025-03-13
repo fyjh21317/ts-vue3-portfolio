@@ -14,10 +14,6 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  utm: {
-    type: Boolean,
-    default: true
-  },
   internal: {
     type: Boolean,
     default: false
@@ -46,18 +42,6 @@ const isInternalPage = computed(() => {
   return false
 })
 
-// 為外部連結添加 UTM 參數
-const getUtmLink = computed(() => {
-  const href = formattedHref.value
-  try {
-    const url = new URL(href)
-    url.searchParams.append('utm_source', 'eggsy.xyz')
-    return url.href
-  } catch (err) {
-    return href
-  }
-})
-
 const handleClick = (event: MouseEvent) => {
   if (formattedHref.value === '#') {
     event.preventDefault() // 避免頁面重複刷新
@@ -79,7 +63,7 @@ const handleClick = (event: MouseEvent) => {
   <!-- External Link -->
   <a
     v-else
-    :href="utm ? getUtmLink : formattedHref"
+    :href="formattedHref"
     :target="blank ? '_blank' : ''"
     rel="noreferrer noopener"
     :title="title"
