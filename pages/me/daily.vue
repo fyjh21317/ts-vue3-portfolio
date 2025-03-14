@@ -31,11 +31,12 @@ const getRandomTrack = async () => {
 }
 
 onMounted(async () => {
-  pageLoaded.value = true
+  pageLoaded.value = false // 載入中
   try {
     const response = await $fetch('/api/spotify-playlist')
     tracks.value = response
     getRandomTrack()
+    pageLoaded.value = true // 載入完成
   } catch (err) {
     console.error(err)
     error.value = 'Failed to load tracks. Please try again later.'
@@ -46,7 +47,13 @@ onMounted(async () => {
 <template>
   <PageLayout :title="title" :description="description">
     <div v-if="error" class="error-message">{{ error }}</div>
-    <div class="grid gap-4 md:grid-cols-2">
+
+    <!-- 加載中 -->
+    <div v-if="!pageLoaded" class="flex justify-center p-6">
+      <LightLoader />
+    </div>
+
+    <div v-else class="grid gap-4 md:grid-cols-2">
       <MusicInfo
         v-if="randomTrack"
         :trackName="randomTrack.name"
