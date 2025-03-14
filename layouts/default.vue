@@ -8,9 +8,9 @@ useHead({
   },
   meta: [
     {
-      hid: 'og:site_name',
-      name: 'og:site_name',
-      content: string
+      hid: 'freyaliao',
+      name: 'fang-ying liao portfolio',
+      content: 'frontend developer | mobile developer | Vue.js'
     }
   ]
 })
